@@ -1,0 +1,137 @@
+<svg width="500" height="400" viewBox="0 0 500 400" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Gradients -->
+    <linearGradient id="skyGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#87CEEB;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#E0F6FF;stop-opacity:1" />
+    </linearGradient>
+    
+    <linearGradient id="skinGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#FDBCB4;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#F8BBD9;stop-opacity:1" />
+    </linearGradient>
+    
+    <linearGradient id="heartGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#FF6B9D;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#FF8FB1;stop-opacity:1" />
+    </linearGradient>
+    
+    <radialGradient id="glowGradient" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#0BA6DF;stop-opacity:0.3" />
+      <stop offset="100%" style="stop-color:#0BA6DF;stop-opacity:0" />
+    </radialGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="500" height="400" fill="url(#skyGradient)"/>
+  
+  <!-- Background decorative elements -->
+  <circle cx="100" cy="80" r="20" fill="#0BA6DF" opacity="0.1"/>
+  <circle cx="400" cy="120" r="15" fill="#FF6B9D" opacity="0.15"/>
+  <circle cx="450" cy="300" r="25" fill="#87CEEB" opacity="0.2"/>
+  
+  <!-- Hearts floating -->
+  <g opacity="0.6">
+    <path d="M80 100 C80 95, 85 90, 90 90 C95 90, 100 95, 100 100 C100 95, 105 90, 110 90 C115 90, 120 95, 120 100 C120 110, 100 125, 100 125 C100 125, 80 110, 80 100 Z" fill="url(#heartGradient)">
+      <animateTransform attributeName="transform" type="translate" values="0,0; 10,-5; 0,0" dur="3s" repeatCount="indefinite"/>
+    </path>
+    
+    <path d="M350 70 C350 67, 352 65, 355 65 C358 65, 360 67, 360 70 C360 67, 362 65, 365 65 C368 65, 370 67, 370 70 C370 75, 360 85, 360 85 C360 85, 350 75, 350 70 Z" fill="url(#heartGradient)">
+      <animateTransform attributeName="transform" type="translate" values="0,0; -8,3; 0,0" dur="4s" repeatCount="indefinite"/>
+    </path>
+  </g>
+  
+  <!-- Mother figure -->
+  <g transform="translate(180, 80)">
+    <!-- Mother's head -->
+    <circle cx="0" cy="0" r="35" fill="url(#skinGradient)"/>
+    
+    <!-- Hair -->
+    <ellipse cx="-2" cy="-15" rx="38" ry="25" fill="#8B4513"/>
+    <path d="M-35,-20 Q-40,-30 -30,-35 Q-20,-40 -10,-35 Q0,-40 10,-35 Q20,-40 30,-35 Q40,-30 35,-20" fill="#8B4513"/>
+    
+    <!-- Eyes -->
+    <circle cx="-12" cy="-5" r="3" fill="#333"/>
+    <circle cx="12" cy="-5" r="3" fill="#333"/>
+    <circle cx="-11" cy="-6" r="1" fill="white"/>
+    <circle cx="13" cy="-6" r="1" fill="white"/>
+    
+    <!-- Nose -->
+    <ellipse cx="0" cy="2" rx="2" ry="3" fill="#F8BBD9" opacity="0.7"/>
+    
+    <!-- Smile -->
+    <path d="M-8,8 Q0,15 8,8" stroke="#FF6B9D" stroke-width="2" fill="none"/>
+    
+    <!-- Mother's body -->
+    <ellipse cx="0" cy="70" rx="45" ry="55" fill="#FFB6C1"/>
+    
+    <!-- Arms -->
+    <ellipse cx="-35" cy="50" rx="15" ry="30" fill="url(#skinGradient)" transform="rotate(-20)"/>
+    <ellipse cx="35" cy="50" rx="15" ry="30" fill="url(#skinGradient)" transform="rotate(20)"/>
+  </g>
+  
+  <!-- Baby figure -->
+  <g transform="translate(280, 160)">
+    <!-- Baby's head -->
+    <circle cx="0" cy="0" r="25" fill="url(#skinGradient)"/>
+    
+    <!-- Baby hair -->
+    <path d="M-20,-15 Q-15,-25 0,-20 Q15,-25 20,-15" fill="#D2B48C"/>
+    
+    <!-- Baby eyes -->
+    <circle cx="-8" cy="-3" r="2" fill="#333"/>
+    <circle cx="8" cy="-3" r="2" fill="#333"/>
+    <circle cx="-7" cy="-4" r="0.5" fill="white"/>
+    <circle cx="9" cy="-4" r="0.5" fill="white"/>
+    
+    <!-- Baby nose -->
+    <circle cx="0" cy="2" r="1" fill="#F8BBD9" opacity="0.5"/>
+    
+    <!-- Baby smile -->
+    <path d="M-5,6 Q0,10 5,6" stroke="#FF6B9D" stroke-width="1.5" fill="none"/>
+    
+    <!-- Baby body -->
+    <ellipse cx="0" cy="45" rx="30" ry="35" fill="#B0E0E6"/>
+    
+    <!-- Baby arms -->
+    <circle cx="-20" cy="35" r="10" fill="url(#skinGradient)"/>
+    <circle cx="20" cy="35" r="10" fill="url(#skinGradient)"/>
+    
+    <!-- Baby legs -->
+    <circle cx="-12" cy="70" r="8" fill="url(#skinGradient)"/>
+    <circle cx="12" cy="70" r="8" fill="url(#skinGradient)"/>
+  </g>
+  
+  <!-- Love symbols and decorations -->
+  <g opacity="0.8">
+    <!-- Large heart between them -->
+    <path d="M240 180 C240 170, 250 160, 260 160 C270 160, 280 170, 280 180 C280 170, 290 160, 300 160 C310 160, 320 170, 320 180 C320 200, 280 230, 280 230 C280 230, 240 200, 240 180 Z" fill="url(#heartGradient)">
+      <animateTransform attributeName="transform" type="scale" values="1; 1.1; 1" dur="2s" repeatCount="indefinite"/>
+    </path>
+    
+    <!-- Sparkles -->
+    <g fill="#FFD700" opacity="0.7">
+      <path d="M150,50 L155,60 L165,55 L155,65 L150,75 L145,65 L135,55 L145,60 Z">
+        <animateTransform attributeName="transform" type="rotate" values="0; 360" dur="8s" repeatCount="indefinite"/>
+      </path>
+      <path d="M380,90 L383,97 L390,94 L383,101 L380,108 L377,101 L370,94 L377,97 Z">
+        <animateTransform attributeName="transform" type="rotate" values="360; 0" dur="6s" repeatCount="indefinite"/>
+      </path>
+      <path d="M120,200 L123,207 L130,204 L123,211 L120,218 L117,211 L110,204 L117,207 Z">
+        <animateTransform attributeName="transform" type="rotate" values="0; 360" dur="10s" repeatCount="indefinite"/>
+      </path>
+    </g>
+  </g>
+  
+  <!-- Glow effect -->
+  <circle cx="250" cy="200" r="150" fill="url(#glowGradient)"/>
+  
+  <!-- Brand elements -->
+  <text x="250" y="350" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#0BA6DF" opacity="0.8">
+    MEVABE
+  </text>
+  
+  <text x="250" y="370" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#666" opacity="0.6">
+    Yêu thương mẹ và bé
+  </text>
+</svg>

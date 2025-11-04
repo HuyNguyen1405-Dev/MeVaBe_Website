@@ -1,212 +1,207 @@
 "use client";
 import { useState, useEffect } from "react";
-import {
-  ShoppingCartIcon,
-  HeartIcon,
-  StarIcon,
-  ShieldCheckIcon,
-  TruckIcon,
-} from "@heroicons/react/24/solid";
+import { ShoppingCartIcon } from "@heroicons/react/24/outline";
+
+interface BannerSlide {
+  title: string;
+  highlight: string;
+  discount: string;
+  subtitle: string;
+  price: string;
+  originalPrice: string;
+  trustLine: string;
+  fomoText: string;
+  ctaText: string;
+  stockLeft: string;
+  image: string;
+  ctaLink: string;
+}
 
 export default function Banner() {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [isHovered, setIsHovered] = useState(false);
 
-  const bannerContent = [
+  const bannerSlides: BannerSlide[] = [
     {
-      title: "Yêu thương",
-      highlight: "Mẹ & Bé",
-      subtitle: "mỗi ngày",
-      description:
-        "Chúng tôi mang đến sản phẩm an toàn, chất lượng cao cho mẹ và bé yêu của bạn.",
-      image: "/images/banners/banner-mom-baby.svg",
-      bgGradient: "from-primary-50 via-secondary-50 to-primary-100",
+      title: "GIẢM",
+      highlight: "50%",
+      discount: "KHUYẾN MÃI ĐẶC BIỆT",
+      subtitle: "BỈM HUGGIES PREMIUM",
+      price: "159K",
+      originalPrice: "318K",
+      trustLine: "100% chính hãng • Đổi trả 30 ngày",
+      fomoText: "127 gói còn lại",
+      ctaText: "MUA NGAY",
+      stockLeft: "127 gói",
+      image: "/images/banners/bim-huggies-baby.jpg",
+      ctaLink: "/san-pham/bim-huggies-premium",
     },
     {
-      title: "Chất lượng",
-      highlight: "Đỉnh cao",
-      subtitle: "an toàn tuyệt đối",
-      description:
-        "Sản phẩm được kiểm định nghiêm ngặt, đảm bảo 100% an toàn cho sức khỏe mẹ và bé.",
-      image: "/images/banners/banner-quality.svg",
-      bgGradient: "from-success-50 via-primary-50 to-secondary-100",
+      title: "GIẢM",
+      highlight: "40%",
+      discount: "DEAL HOT TRONG NGÀY", 
+      subtitle: "SỮA ABBOTT GROW GOLD",
+      price: "299K",
+      originalPrice: "499K", 
+      trustLine: "100% chính hãng • Giao hàng 2h nội thành",
+      fomoText: "89 hộp còn lại",
+      ctaText: "CHỌN MUA",
+      stockLeft: "89 hộp",
+      image: "/images/banners/luxury-baby-hero.webp",
+      ctaLink: "/san-pham/sua-abbott-grow-gold",
     },
     {
-      title: "Ưu đãi",
-      highlight: "Siêu hấp dẫn",
-      subtitle: "hôm nay",
-      description:
-        "Miễn phí vận chuyển toàn quốc, bảo hành 12 tháng, đổi trả trong 7 ngày.",
-      image: "/images/banners/banner-promotion.svg",
-      bgGradient: "from-warning-50 via-accent-50 to-warning-100",
+      title: "GIẢM", 
+      highlight: "35%",
+      discount: "FLASH SALE 24H",
+      subtitle: "XE ĐẨY SEEBABY T08",
+      price: "1.999K",
+      originalPrice: "3.099K",
+      trustLine: "100% chính hãng • Bảo hành 24 tháng", 
+      fomoText: "23 chiếc còn lại",
+      ctaText: "CHỐT ĐƠN",
+      stockLeft: "23 chiếc",
+      image: "/images/banners/banner-promotion.svg", 
+      ctaLink: "/san-pham/xe-day-seebaby-t08",
     },
   ];
 
   useEffect(() => {
     const timer = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % bannerContent.length);
-    }, 5000);
+      setCurrentSlide((prev) => (prev + 1) % bannerSlides.length);
+    }, 8000);
     return () => clearInterval(timer);
-  }, []);
+  }, [bannerSlides.length]);
 
-  const currentContent = bannerContent[currentSlide];
+  const currentSlideData = bannerSlides[currentSlide];
 
   return (
-    <section
-      className={`relative bg-gradient-to-br ${currentContent.bgGradient} py-16 overflow-hidden transition-all duration-1000`}
+    <section 
+      className="relative w-full h-[600px] overflow-hidden banner-gradient"
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
     >
-      {/* Background Decorations */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-10 left-10 w-32 h-32 bg-white/20 rounded-full blur-xl animate-pulse"></div>
-        <div className="absolute bottom-20 right-20 w-48 h-48 bg-primary-400/10 rounded-full blur-2xl animate-bounce"></div>
-        <div className="absolute top-1/2 left-1/3 w-24 h-24 bg-warning-200/30 rounded-full blur-lg animate-pulse delay-1000"></div>
+      {/* Pure white background with subtle gradient - Brand Color #0ba6df */}
+      <div className="absolute inset-0 bg-gradient-to-r from-[#0ba6df] via-white/95 to-white"></div>
+      
+      {/* Subtle soft bokeh effects - 30% negative space */}
+      <div className="absolute inset-0 opacity-60">
+        <div className="absolute top-16 left-[8%] w-40 h-40 bg-white/25 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-20 right-[12%] w-32 h-32 bg-[#0ba6df]/10 rounded-full blur-2xl animate-pulse delay-1000"></div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 relative z-10">
-        <div className="flex flex-col lg:flex-row items-center gap-12">
-          {/* Content Side */}
-          <div className="flex-1 text-center lg:text-left space-y-6">
-            {/* Trust Badges */}
-            <div className="flex flex-wrap justify-center lg:justify-start gap-4 mb-6">
-              <div className="flex items-center space-x-2 bg-white/80 backdrop-blur-sm rounded-full px-4 py-2 shadow-primary">
-                <ShieldCheckIcon className="w-5 h-5 text-success-500" />
-                <span className="text-sm font-medium text-gray-700">
-                  Chứng nhận FDA
-                </span>
-              </div>
-              <div className="flex items-center space-x-2 bg-white/80 backdrop-blur-sm rounded-full px-4 py-2 shadow-primary">
-                <StarIcon className="w-5 h-5 text-warning-500" />
-                <span className="text-sm font-medium text-gray-700">
-                  4.9★ Đánh giá
-                </span>
-              </div>
-              <div className="flex items-center space-x-2 bg-white/80 backdrop-blur-sm rounded-full px-4 py-2 shadow-primary">
-                <TruckIcon className="w-5 h-5 text-primary-400" />
-                <span className="text-sm font-medium text-gray-700">
-                  Giao hàng 2h
-                </span>
-              </div>
-            </div>
-
-            {/* Main Heading */}
-            <div className="space-y-2">
-              <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold leading-tight">
-                <span className="text-gray-800">{currentContent.title} </span>
-                <span className="bg-gradient-primary bg-clip-text text-transparent animate-pulse">
-                  {currentContent.highlight}
-                </span>
-                <br />
-                <span className="text-gray-600 text-3xl md:text-4xl lg:text-5xl">
-                  {currentContent.subtitle}
-                </span>
-              </h1>
-            </div>
-
-            {/* Description */}
-            <p className="text-lg md:text-xl text-gray-700 leading-relaxed max-w-2xl">
-              {currentContent.description}
-            </p>
-
-            {/* Action Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mt-8">
-              <a
-                href="/client/san-pham"
-                className="group relative bg-gradient-primary text-white px-8 py-4 rounded-full font-semibold text-lg shadow-primary hover:shadow-primary-lg transform hover:scale-105 transition-all duration-300 flex items-center justify-center space-x-2 overflow-hidden"
-              >
-                <ShoppingCartIcon className="w-6 h-6 relative z-10" />
-                <span className="relative z-10">Mua ngay</span>
-                <div className="absolute inset-0 bg-white/20 rounded-full scale-0 group-hover:scale-100 transition-transform duration-300"></div>
-              </a>
-
-              <a
-                href="/client/yeu-thich"
-                className="group bg-white/80 backdrop-blur-sm text-primary-400 px-8 py-4 rounded-full font-semibold text-lg shadow-primary hover:shadow-primary-lg border-2 border-primary-400/30 hover:border-primary-400 transform hover:scale-105 transition-all duration-300 flex items-center justify-center space-x-2"
-              >
-                <HeartIcon className="w-6 h-6" />
-                <span>Yêu thích</span>
-              </a>
-            </div>
-
-            {/* Promotion Banner */}
-            <div className="bg-gradient-accent text-white p-4 rounded-2xl shadow-accent inline-block mt-6 animate-bounce">
-              <div className="flex items-center space-x-3">
-                <span className="text-2xl">🔥</span>
-                <div>
-                  <p className="font-bold text-sm">FLASH SALE</p>
-                  <p className="text-xs opacity-90">
-                    Giảm đến 50% - Chỉ hôm nay!
-                  </p>
-                </div>
-              </div>
-            </div>
+      <div className="max-w-7xl mx-auto h-full flex items-center relative z-10 px-4">
+        
+        {/* Left Content Section - 60% width for mobile crop protection */}
+        <div className="w-full lg:w-[60%] space-y-10 mobile-crop-safe">
+          
+          {/* FOMO Badge - Minimal pill design */}
+          <div className="inline-flex items-center bg-[#ff4757]/5 backdrop-blur-sm border border-[#ff4757]/20 rounded-full px-5 py-2.5 elegant-hover">
+            <div className="w-2 h-2 bg-[#ff4757] rounded-full animate-ping mr-3"></div>
+            <span className="text-sm font-inter-medium text-[#ff4757] font-medium">
+              {currentSlideData.fomoText}
+            </span>
           </div>
 
-          {/* Image Side */}
-          <div className="flex-1 relative">
-            <div className="relative">
-              {/* Main Image */}
-              <div className="relative z-10 transform hover:scale-105 transition-transform duration-500">
-                <img
-                  src={currentContent.image}
-                  alt="Mẹ và bé"
-                  className="w-full max-w-lg mx-auto rounded-3xl shadow-2xl"
-                />
-              </div>
+          {/* Main Title - Inter ExtraBold 78px with -0.5px letter spacing */}
+          <div className="space-y-6">
+            <h1 className="font-inter-extrabold text-6xl lg:text-[78px] text-[#0ba6df] leading-none letter-spacing-tight banner-text-shadow">
+              {currentSlideData.title}{" "}
+              <span className="text-[#0ba6df]">{currentSlideData.highlight}</span>{" "}
+              <span className="text-gray-800">OFF</span>
+              <br />
+              <span className="text-gray-800 text-4xl lg:text-5xl font-inter-medium">
+                {currentSlideData.subtitle}
+              </span>
+            </h1>
+          </div>
 
-              {/* Floating Elements */}
-              <div className="absolute -top-4 -right-4 bg-warning-400 text-warning-900 p-3 rounded-full shadow-lg animate-bounce delay-500 z-20">
-                <span className="text-sm font-bold">NEW</span>
-              </div>
+          {/* Subtitle Line - Inter Medium 36px */}
+          <p className="font-inter-medium text-2xl lg:text-[36px] text-gray-600 leading-relaxed max-w-2xl">
+            Chỉ từ <span className="text-[#0ba6df] font-semibold">{currentSlideData.price}</span> • Giao hàng 2h nội thành
+          </p>
 
-              <div className="absolute -bottom-4 -left-4 bg-success-500 text-white p-3 rounded-full shadow-lg animate-pulse z-20">
-                <span className="text-sm font-bold">-30%</span>
-              </div>
+          {/* Trust Line - Small text in brand color */}
+          <p className="text-base font-inter-medium text-[#0ba6df]">
+            {currentSlideData.trustLine}
+          </p>
 
-              {/* Background Circle */}
-              <div className="absolute inset-0 bg-gradient-to-br from-primary-400/20 to-secondary-500/20 rounded-full scale-110 animate-pulse"></div>
+          {/* CTA Button with enhanced hover glow and micro-interactions */}
+          <div className="flex items-center space-x-6 pt-4">
+            <a
+              href={currentSlideData.ctaLink}
+              className={`group relative bg-[#0ba6df] hover:bg-[#0891b2] text-white px-10 py-4 rounded-xl font-bold text-lg shadow-xl transition-all duration-300 flex items-center space-x-3 elegant-hover micro-scale ${
+                isHovered ? "micro-glow" : ""
+              }`}
+            >
+              <ShoppingCartIcon className="w-5 h-5 group-hover:scale-110 transition-transform duration-200" />
+              <span className="font-inter-medium">{currentSlideData.ctaText}</span>
+              
+              {/* Animated heartbeat line under CTA */}
+              <div className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-white/60 group-hover:w-3/4 transition-all duration-500 animate-heartbeat"></div>
+            </a>
+          </div>
+        </div>
+
+        {/* Right Image Section - Vietnamese Baby with premium white linen cushion */}
+        <div className="hidden lg:flex w-[40%] h-full items-center justify-center relative">
+          
+          {/* Main Baby Image Container with soft morning light effect */}
+          <div className="relative">
+            {/* Soft morning light gradient from left */}
+            <div className="absolute -inset-8 bg-gradient-to-r from-white/30 via-[#fff9f5]/20 to-transparent rounded-full blur-2xl"></div>
+            
+            {/* Premium white linen cushion effect */}
+            <div className="relative z-10 w-72 h-72 bg-gradient-to-br from-[#fff9f5] via-white to-[#f8f9fa] rounded-full flex items-center justify-center banner-floating-element">
+              <img
+                src={currentSlideData.image}
+                alt={`Khuyến mãi ${currentSlideData.subtitle} giảm ${currentSlideData.highlight} chỉ ${currentSlideData.price}k – Shop Mẹ Bé – Giao hàng nhanh, chính hãng`}
+                className="w-64 h-64 object-cover rounded-full webp-optimized"
+                loading="lazy"
+              />
+            </div>
+
+            {/* 3D Floating Product with soft light */}
+            <div className="absolute -top-6 -right-6 w-20 h-20 bg-white/95 backdrop-blur-sm rounded-xl banner-soft-shadow flex items-center justify-center animate-bounce-slow border border-[#0ba6df]/5">
+              <div className="w-12 h-12 bg-gradient-to-br from-[#0ba6df]/15 to-[#0ba6df]/5 rounded-lg"></div>
             </div>
           </div>
         </div>
 
-        {/* Slide Indicators */}
-        <div className="flex justify-center space-x-3 mt-12">
-          {bannerContent.map((_, index) => (
+        {/* Floating Price Tag with soft ribbon - Minimalist */}
+        <div className="absolute top-12 right-8 lg:right-[42%] bg-white/98 backdrop-blur-sm border border-[#0ba6df]/10 rounded-2xl px-8 py-5 banner-floating-element elegant-hover">
+          <div className="text-center">
+            <div className="text-sm font-inter-medium text-gray-500 mb-1">Giá ưu đãi</div>
+            <div className="text-3xl font-black text-[#0ba6df] mb-1">{currentSlideData.price}</div>
+            <div className="text-sm line-through text-gray-400">{currentSlideData.originalPrice}</div>
+          </div>
+          {/* Subtle ribbon effect */}
+          <div className="absolute -top-2 -right-2 w-8 h-8 bg-[#0ba6df] rounded-full flex items-center justify-center banner-soft-shadow">
+            <span className="text-white text-xs font-bold">%</span>
+          </div>
+        </div>
+
+        {/* Slide Indicators - Elegant minimalist design */}
+        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex space-x-4">
+          {bannerSlides.map((_, index) => (
             <button
               key={index}
               onClick={() => setCurrentSlide(index)}
-              className={`w-3 h-3 rounded-full transition-all duration-300 ${
+              className={`h-2 rounded-full transition-all duration-500 elegant-hover ${
                 index === currentSlide
-                  ? "bg-primary-400 scale-125"
-                  : "bg-white/50 hover:bg-white/80"
+                  ? "bg-[#0ba6df] w-12 banner-soft-shadow"
+                  : "bg-white/60 w-2 hover:bg-[#0ba6df]/50"
               }`}
               aria-label={`Slide ${index + 1}`}
             />
           ))}
         </div>
-
-        {/* Stats Section */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-16 text-center">
-          <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-primary hover:shadow-primary-lg transition-all duration-300 hover:scale-105">
-            <div className="text-3xl font-bold text-primary-400">10K+</div>
-            <div className="text-gray-600 text-sm mt-1">Khách hàng tin yêu</div>
-          </div>
-          <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-primary hover:shadow-primary-lg transition-all duration-300 hover:scale-105">
-            <div className="text-3xl font-bold text-primary-400">5000+</div>
-            <div className="text-gray-600 text-sm mt-1">
-              Sản phẩm chất lượng
-            </div>
-          </div>
-          <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-primary hover:shadow-primary-lg transition-all duration-300 hover:scale-105">
-            <div className="text-3xl font-bold text-primary-400">24/7</div>
-            <div className="text-gray-600 text-sm mt-1">Hỗ trợ khách hàng</div>
-          </div>
-          <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-primary hover:shadow-primary-lg transition-all duration-300 hover:scale-105">
-            <div className="text-3xl font-bold text-primary-400">98%</div>
-            <div className="text-gray-600 text-sm mt-1">
-              Khách hàng hài lòng
-            </div>
-          </div>
-        </div>
       </div>
+
+      {/* SEO Optimized Alt Text - Hidden for accessibility */}
+      <span className="sr-only">
+        Khuyến mãi {currentSlideData.subtitle} giảm {currentSlideData.highlight} chỉ {currentSlideData.price}k – Shop Mẹ Bé – Giao hàng nhanh, chính hãng
+      </span>
     </section>
   );
 }

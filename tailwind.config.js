@@ -6,6 +6,10 @@ module.exports = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        'be-vietnam': ['"Be Vietnam Pro"', 'Inter', 'sans-serif'],
+        'inter': ['Inter', 'sans-serif'],
+      },
       colors: {
         // Bảng màu chính - Mevabe Brand Colors
         primary: {
@@ -71,6 +75,19 @@ module.exports = {
           700: '#b45309',
           800: '#92400e',
           900: '#78350f',
+        },
+        // Mint colors for warm pastel theme
+        mint: {
+          50: '#f0fdfa',
+          100: '#ccfbf1',
+          200: '#99f6e4',
+          300: '#5eead4',
+          400: '#2dd4bf',
+          500: '#14b8a6',
+          600: '#0d9488',
+          700: '#0f766e',
+          800: '#115e59',
+          900: '#134e4a',
         }
       },
       // Gradient backgrounds
@@ -88,6 +105,58 @@ module.exports = {
         'primary-lg': '0 10px 25px 0 rgba(11, 166, 223, 0.2)',
         'secondary': '0 4px 14px 0 rgba(56, 189, 248, 0.15)',
         'accent': '0 4px 14px 0 rgba(244, 63, 94, 0.15)',
+        '3xl': '0 35px 60px -12px rgba(0, 0, 0, 0.25)',
+      },
+      // Custom animations
+      animation: {
+        'fade-in': 'fadeIn 0.8s ease-out',
+        'slide-up': 'slideUp 0.8s ease-out',
+        'fade-in-up': 'fadeInUp 0.8s ease-out',
+        'scale-x-in': 'scaleXIn 0.8s ease-out 0.5s both',
+        'gradient': 'gradient 3s ease infinite',
+        'bounce-slow': 'bounceGentle 2s ease-in-out infinite',
+        'pulse-slow': 'pulseSlow 3s ease-in-out infinite',
+        'float': 'float 3s ease-in-out infinite',
+        'shimmer': 'shimmer 2s infinite',
+      },
+      // Custom keyframes (these are already defined in globals.css but adding for reference)
+      keyframes: {
+        fadeIn: {
+          'from': { opacity: '0' },
+          'to': { opacity: '1' },
+        },
+        slideUp: {
+          'from': { opacity: '0', transform: 'translateY(30px)' },
+          'to': { opacity: '1', transform: 'translateY(0)' },
+        },
+        fadeInUp: {
+          'from': { opacity: '0', transform: 'translateY(20px)' },
+          'to': { opacity: '1', transform: 'translateY(0)' },
+        },
+        scaleXIn: {
+          'from': { transform: 'scaleX(0)' },
+          'to': { transform: 'scaleX(1)' },
+        },
+        gradient: {
+          '0%, 100%': { backgroundPosition: '0% 50%' },
+          '50%': { backgroundPosition: '100% 50%' },
+        },
+        bounceGentle: {
+          '0%, 100%': { transform: 'translateY(0)' },
+          '50%': { transform: 'translateY(-5px)' },
+        },
+        pulseSlow: {
+          '0%, 100%': { opacity: '1' },
+          '50%': { opacity: '0.8' },
+        },
+        float: {
+          '0%, 100%': { transform: 'translateY(0px)' },
+          '50%': { transform: 'translateY(-10px)' },
+        },
+        shimmer: {
+          '0%': { backgroundPosition: '-200px 0' },
+          '100%': { backgroundPosition: 'calc(200px + 100%) 0' },
+        },
       }
     },
   },

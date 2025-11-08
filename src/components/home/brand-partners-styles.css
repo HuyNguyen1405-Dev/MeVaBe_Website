@@ -1,0 +1,229 @@
+/* Brand Partners Component Styles */
+.brand-partners-section {
+  position: relative;
+}
+
+.brand-partners-section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, #f8faff 0%, #ffffff 100%);
+  opacity: 0.8;
+  pointer-events: none;
+}
+
+/* Animation for brand logos on scroll */
+@media (min-width: 768px) {
+  .brand-logo-card {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 0.6s ease-out forwards;
+  }
+
+  .brand-logo-card:nth-child(1) {
+    animation-delay: 0.1s;
+  }
+  .brand-logo-card:nth-child(2) {
+    animation-delay: 0.2s;
+  }
+  .brand-logo-card:nth-child(3) {
+    animation-delay: 0.3s;
+  }
+  .brand-logo-card:nth-child(4) {
+    animation-delay: 0.4s;
+  }
+  .brand-logo-card:nth-child(5) {
+    animation-delay: 0.5s;
+  }
+  .brand-logo-card:nth-child(6) {
+    animation-delay: 0.6s;
+  }
+  .brand-logo-card:nth-child(7) {
+    animation-delay: 0.7s;
+  }
+  .brand-logo-card:nth-child(8) {
+    animation-delay: 0.8s;
+  }
+}
+
+/* Trust indicators animation */
+.trust-indicator {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.5s ease-out forwards;
+}
+
+.trust-indicator:nth-child(1) {
+  animation-delay: 0.2s;
+}
+.trust-indicator:nth-child(2) {
+  animation-delay: 0.4s;
+}
+.trust-indicator:nth-child(3) {
+  animation-delay: 0.6s;
+}
+.trust-indicator:nth-child(4) {
+  animation-delay: 0.8s;
+}
+
+/* Smooth hover animations */
+.brand-logo-hover {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.brand-logo-hover:hover {
+  transform: translateY(-4px) scale(1.05);
+}
+
+/* Enhanced slider for mobile */
+.mobile-slider {
+  touch-action: pan-x;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Custom focus styles for accessibility */
+.focus-custom:focus {
+  outline: 2px solid #0ba6df;
+  outline-offset: 2px;
+}
+
+/* Optimized transforms for performance */
+.transform3d {
+  transform: translateZ(0);
+  will-change: transform;
+}
+
+/* Loading animation for images */
+.image-loading {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: loading 2s infinite;
+}
+
+/* Pulse animation for indicators */
+.pulse-animation {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Micro-interactions */
+.micro-bounce:hover {
+  animation: microBounce 0.3s ease-in-out;
+}
+
+/* Gradient text effect */
+/* Gradient text effect */
+.gradient-text {
+  background: linear-gradient(135deg, #0ba6df, #0891b2);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Keyframe animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+@keyframes microBounce {
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-3px);
+  }
+  60% {
+    transform: translateY(-1px);
+  }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  .dark-mode-support {
+    --bg-primary: #1f2937;
+    --bg-secondary: #374151;
+    --text-primary: #f9fafb;
+    --text-secondary: #d1d5db;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .brand-logo-card,
+  .trust-indicator {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+
+  .brand-logo-hover:hover {
+    transform: none;
+  }
+
+  * {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}
+
+/* Print styles */
+@media print {
+  .brand-partners-section {
+    background: white !important;
+    box-shadow: none !important;
+  }
+
+  .mobile-slider {
+    overflow: visible !important;
+  }
+
+  .mobile-slider > div {
+    transform: none !important;
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 1rem !important;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .brand-logo-card {
+    border: 2px solid #000;
+  }
+
+  .trust-indicator {
+    border: 1px solid #000;
+  }
+}

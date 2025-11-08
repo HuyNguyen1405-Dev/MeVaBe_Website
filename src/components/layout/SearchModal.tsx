@@ -96,24 +96,25 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}
-        <div className="sticky top-0 bg-white border-b border-gray-200 px-4 py-4">
-          <div className="max-w-3xl mx-auto flex items-center space-x-4">
+        <div className="sticky top-0 bg-white/95 backdrop-blur-md border-b border-primary-200 px-4 py-4 shadow-sm">
+          <div className="max-w-4xl mx-auto flex items-center space-x-4">
             <div className="flex-1 relative">
-              <MagnifyingGlassIcon className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
+              <MagnifyingGlassIcon className="absolute left-5 top-1/2 transform -translate-y-1/2 w-6 h-6 text-primary-400" />
               <input
                 type="search"
-                placeholder="Tìm kiếm sản phẩm cho mẹ và bé..."
+                placeholder="Tìm kiếm đồ chơi, quần áo, sữa bột cho mẹ và bé..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-12 pr-4 py-3 text-lg border border-gray-300 rounded-full focus:outline-none focus:border-pink-500 focus:ring-2 focus:ring-pink-200"
+                className="w-full pl-14 pr-6 py-4 text-lg border-2 border-primary-200 rounded-2xl focus:outline-none focus:border-primary-400 focus:ring-4 focus:ring-primary-100 transition-all duration-300 font-medium"
                 autoFocus
-                aria-label="Tìm kiếm sản phẩm"
+                aria-label="Tìm kiếm sản phẩm cho mẹ và bé"
               />
             </div>
             <button
               onClick={onClose}
-              className="p-2 text-gray-500 hover:text-gray-700 transition-colors duration-200"
-              aria-label="Đóng tìm kiếm"
+              className="btn-icon"
+              aria-label="Đóng hộp thoại tìm kiếm"
+              title="Đóng tìm kiếm"
             >
               <XMarkIcon className="w-6 h-6" />
             </button>
@@ -128,12 +129,13 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
               <h3 className="text-lg font-semibold text-gray-800 mb-4">
                 Tìm kiếm phổ biến
               </h3>
-              <div className="flex flex-wrap gap-2">
-                {popularSearches.map((term) => (
+              <div className="flex flex-wrap gap-3">
+                {popularSearches.map((term, index) => (
                   <button
                     key={term}
                     onClick={() => setSearchQuery(term)}
-                    className="px-4 py-2 bg-pink-50 text-pink-700 rounded-full hover:bg-pink-100 transition-colors duration-200 text-sm"
+                    className="btn-tertiary"
+                    style={{ animationDelay: `${index * 100}ms` }}
                   >
                     {term}
                   </button>

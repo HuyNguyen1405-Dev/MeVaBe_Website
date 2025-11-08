@@ -17,7 +17,7 @@ export default function ContactPage() {
           <label className="block text-sm font-medium">Nội dung</label>
           <textarea className="mt-1 block w-full border rounded-md p-2" rows={5} />
         </div>
-        <button type="submit" className="bg-pink-500 text-white px-4 py-2 rounded-md">Gửi liên hệ</button>
+        <button type="submit" className="btn-primary">Gửi liên hệ</button>
       </form>
     </section>
   );

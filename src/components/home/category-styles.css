@@ -1,0 +1,159 @@
+/* Category List Modern Styles for Mom & Baby Shop */
+
+.category-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.category-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(11, 166, 223, 0.1),
+    transparent
+  );
+  transition: left 0.6s;
+  z-index: 1;
+}
+
+.category-card:hover::before {
+  left: 100%;
+}
+
+/* Removed category icon animations since icons are no longer used */
+
+/* Pulse effect for featured badges */
+@keyframes pulse-glow {
+  0%,
+  100% {
+    box-shadow: 0 0 5px rgba(11, 166, 223, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(11, 166, 223, 0.8),
+      0 0 30px rgba(11, 166, 223, 0.4);
+  }
+}
+
+.featured-badge {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+/* Gradient text animation */
+@keyframes gradient-shift {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.gradient-text {
+  background: linear-gradient(-45deg, #0ba6df, #3b82f6, #6366f1, #8b5cf6);
+  background-size: 400% 400%;
+  animation: gradient-shift 4s ease infinite;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Smooth scale animation for statistics */
+.stat-number {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.stat-card:hover .stat-number {
+  transform: scale(1.1) translateY(-2px);
+}
+
+/* Loading skeleton animation */
+@keyframes shimmer {
+  0% {
+    background-position: -200px 0;
+  }
+  100% {
+    background-position: calc(200px + 100%) 0;
+  }
+}
+
+.skeleton {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200px 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+/* Mobile optimizations */
+@media (max-width: 640px) {
+  .category-card {
+    transform: none !important;
+  }
+
+  .category-card:hover {
+    transform: scale(1.02) !important;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .category-card {
+    border: 2px solid #000;
+  }
+
+  .gradient-text {
+    -webkit-text-fill-color: #0ba6df;
+    background: none;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .category-card,
+  .stat-number,
+  .featured-badge {
+    animation: none;
+    transition: none;
+  }
+
+  .category-card::before {
+    display: none;
+  }
+}
+
+/* Custom scrollbar for mobile horizontal scroll if needed */
+.categories-scroll::-webkit-scrollbar {
+  height: 4px;
+}
+
+.categories-scroll::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 2px;
+}
+
+.categories-scroll::-webkit-scrollbar-thumb {
+  background: #0ba6df;
+  border-radius: 2px;
+}
+
+.categories-scroll::-webkit-scrollbar-thumb:hover {
+  background: #0891b2;
+}
+
+/* Print styles */
+@media print {
+  .category-card {
+    break-inside: avoid;
+    border: 1px solid #ccc;
+  }
+
+  .gradient-text {
+    -webkit-text-fill-color: #000;
+    color: #000;
+  }
+}

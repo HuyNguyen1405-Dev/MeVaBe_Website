@@ -1,0 +1,278 @@
+/* PromotionProducts Component - Minimalist 2025 Styles với tone màu thương hiệu #0ba6df */
+
+/* Subtle animations cho product cards */
+.product-card-enter {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: productCardEnter 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes productCardEnter {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Tinh tế flash sale pulse */
+.flash-sale-pulse {
+  animation: flashSalePulse 3s ease-in-out infinite;
+}
+
+@keyframes flashSalePulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(11, 166, 223, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 0 4px rgba(11, 166, 223, 0);
+  }
+}
+
+/* Subtle HOT badge animation */
+.hot-badge-bounce {
+  animation: hotBadgeBounce 2s ease-in-out infinite;
+}
+
+@keyframes hotBadgeBounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-1px);
+  }
+}
+
+/* Gentle price highlight */
+.price-highlight {
+  animation: priceHighlight 0.3s ease-out;
+}
+
+@keyframes priceHighlight {
+  0% {
+    background-color: rgba(11, 166, 223, 0);
+  }
+  50% {
+    background-color: rgba(11, 166, 223, 0.05);
+  }
+  100% {
+    background-color: rgba(11, 166, 223, 0);
+  }
+}
+
+/* Refined image hover effect */
+.product-image-hover {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.product-image-hover:hover {
+  transform: scale(1.05);
+}
+
+/* Subtle button hover effect */
+.btn-hover-primary {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-hover-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 25px rgba(11, 166, 223, 0.25);
+}
+
+/* Minimalist floating animation */
+.floating-subtle {
+  animation: floatingSubtle 8s ease-in-out infinite;
+}
+
+@keyframes floatingSubtle {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+/* Brand gradient */
+.brand-gradient {
+  background: linear-gradient(135deg, #0ba6df 0%, #38bdf8 100%);
+}
+
+.brand-gradient-soft {
+  background: linear-gradient(
+    135deg,
+    rgba(11, 166, 223, 0.1) 0%,
+    rgba(56, 189, 248, 0.1) 100%
+  );
+}
+
+/* Subtle countdown animation */
+.countdown-subtle {
+  animation: countdownSubtle 2s ease-in-out infinite;
+}
+
+@keyframes countdownSubtle {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+/* Minimalist card hover */
+.card-hover-minimal {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid transparent;
+}
+
+.card-hover-minimal:hover {
+  border-color: rgba(11, 166, 223, 0.2);
+  box-shadow: 0 10px 40px rgba(11, 166, 223, 0.1);
+}
+
+/* Clean loading skeleton */
+.skeleton-clean {
+  background: linear-gradient(90deg, #f8f9fa 25%, #e9ecef 50%, #f8f9fa 75%);
+  background-size: 200% 100%;
+  animation: skeletonClean 2s infinite;
+}
+
+@keyframes skeletonClean {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* Refined star rating */
+.star-rating-refined {
+  transition: all 0.2s ease;
+}
+
+.star-rating-refined:hover {
+  transform: scale(1.05);
+  filter: drop-shadow(0 2px 4px rgba(251, 191, 36, 0.3));
+}
+
+/* Clean navigation buttons */
+.nav-btn-clean {
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.nav-btn-clean:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive optimizations */
+@media (max-width: 640px) {
+  .product-card-mobile {
+    margin: 0 2px;
+  }
+
+  .floating-subtle {
+    animation-duration: 6s;
+  }
+
+  /* Reduce spacing on mobile */
+  .mobile-compact {
+    padding: 1rem;
+  }
+}
+
+/* Accessibility - Reduce motion */
+@media (prefers-reduced-motion: reduce) {
+  .product-card-enter,
+  .flash-sale-pulse,
+  .hot-badge-bounce,
+  .floating-subtle,
+  .countdown-subtle,
+  .skeleton-clean {
+    animation: none !important;
+  }
+
+  .product-image-hover:hover,
+  .card-hover-minimal:hover,
+  .nav-btn-clean:hover {
+    transform: none !important;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .brand-gradient {
+    background: #0ba6df;
+  }
+
+  .card-hover-minimal {
+    border: 2px solid #0ba6df;
+  }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  .skeleton-clean {
+    background: linear-gradient(90deg, #1f2937 25%, #374151 50%, #1f2937 75%);
+  }
+
+  .brand-gradient-soft {
+    background: linear-gradient(
+      135deg,
+      rgba(11, 166, 223, 0.2) 0%,
+      rgba(56, 189, 248, 0.2) 100%
+    );
+  }
+}
+
+/* Performance optimizations */
+.gpu-layer {
+  transform: translateZ(0);
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+}
+
+/* Smooth transitions với brand timing */
+.transition-brand {
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.transition-brand-slow {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Focus indicators với brand color */
+.focus-brand:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px #0ba6df;
+}
+
+/* Utility classes cho brand consistency */
+.text-brand {
+  color: #0ba6df;
+}
+
+.bg-brand {
+  background-color: #0ba6df;
+}
+
+.border-brand {
+  border-color: #0ba6df;
+}
+
+.shadow-brand {
+  box-shadow: 0 4px 20px rgba(11, 166, 223, 0.15);
+}
+
+.shadow-brand-lg {
+  box-shadow: 0 10px 40px rgba(11, 166, 223, 0.2);
+}

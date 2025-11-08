@@ -9,12 +9,12 @@ import {
   TruckIcon,
   HeartIcon,
   ChatBubbleLeftRightIcon,
-  ChevronRightIcon
+  ChevronRightIcon,
 } from "@heroicons/react/24/outline";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
-  
+
   const quickLinks = [
     { href: "/client", label: "Trang chủ" },
     { href: "/client/san-pham", label: "Sản phẩm" },
@@ -28,7 +28,7 @@ export default function Footer() {
     { href: "/client/san-pham?category=do-choi", label: "Đồ chơi" },
     { href: "/client/san-pham?category=thoi-trang", label: "Thời trang bé" },
     { href: "/client/san-pham?category=cham-soc", label: "Chăm sóc" },
-    { href: "/client/san-pham?category=xe-day", label: "Xe đẩy" }
+    { href: "/client/san-pham?category=xe-day", label: "Xe đẩy" },
   ];
 
   const policies = [
@@ -37,14 +37,14 @@ export default function Footer() {
     { href: "/chinh-sach/van-chuyen", label: "Chính sách vận chuyển" },
     { href: "/chinh-sach/bao-hanh", label: "Chính sách bảo hành" },
     { href: "/dieu-khoan-su-dung", label: "Điều khoản sử dụng" },
-    { href: "/huong-dan/mua-hang", label: "Hướng dẫn mua hàng" }
+    { href: "/huong-dan/mua-hang", label: "Hướng dẫn mua hàng" },
   ];
 
   const services = [
     { icon: ShieldCheckIcon, text: "Hàng chính hãng 100%" },
     { icon: TruckIcon, text: "Giao hàng nhanh 2-24h" },
     { icon: HeartIcon, text: "Đổi trả trong 30 ngày" },
-    { icon: ChatBubbleLeftRightIcon, text: "Hỗ trợ 24/7" }
+    { icon: ChatBubbleLeftRightIcon, text: "Hỗ trợ 24/7" },
   ];
 
   return (
@@ -72,10 +72,11 @@ export default function Footer() {
                   <p className="text-gray-400 text-sm">Shop chất lượng cao</p>
                 </div>
               </div>
-              
+
               <p className="text-gray-300 mb-6 leading-relaxed">
-                Chúng tôi chuyên cung cấp các sản phẩm chất lượng cao cho mẹ và bé, 
-                cam kết mang đến những sản phẩm an toàn, uy tín với giá cả hợp lý.
+                Chúng tôi chuyên cung cấp các sản phẩm chất lượng cao cho mẹ và
+                bé, cam kết mang đến những sản phẩm an toàn, uy tín với giá cả
+                hợp lý.
               </p>
 
               {/* Contact Info */}
@@ -88,13 +89,19 @@ export default function Footer() {
                 </div>
                 <div className="flex items-center space-x-3">
                   <PhoneIcon className="w-5 h-5 text-primary-400 flex-shrink-0" />
-                  <a href="tel:0123456789" className="text-gray-300 text-sm hover:text-primary-400 transition-colors">
+                  <a
+                    href="tel:0123456789"
+                    className="text-gray-300 text-sm hover:text-primary-400 transition-colors"
+                  >
                     Hotline: 0123.456.789
                   </a>
                 </div>
                 <div className="flex items-center space-x-3">
                   <EnvelopeIcon className="w-5 h-5 text-primary-400 flex-shrink-0" />
-                  <a href="mailto:contact@mevabe.com" className="text-gray-300 text-sm hover:text-primary-400 transition-colors">
+                  <a
+                    href="mailto:contact@mevabe.com"
+                    className="text-gray-300 text-sm hover:text-primary-400 transition-colors"
+                  >
                     contact@mevabe.com
                   </a>
                 </div>
@@ -109,12 +116,14 @@ export default function Footer() {
 
             {/* Quick Links */}
             <div>
-              <h3 className="text-lg font-bold mb-6 text-white">Liên kết nhanh</h3>
+              <h3 className="text-lg font-bold mb-6 text-white">
+                Liên kết nhanh
+              </h3>
               <ul className="space-y-3">
                 {quickLinks.map((link) => (
                   <li key={link.href}>
-                    <Link 
-                      href={link.href} 
+                    <Link
+                      href={link.href}
                       className="text-gray-300 hover:text-primary-400 transition-colors text-sm flex items-center space-x-2 group"
                     >
                       <ChevronRightIcon className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -123,13 +132,15 @@ export default function Footer() {
                   </li>
                 ))}
               </ul>
-              
-              <h4 className="text-md font-semibold mt-8 mb-4 text-white">Danh mục sản phẩm</h4>
+
+              <h4 className="text-md font-semibold mt-8 mb-4 text-white">
+                Danh mục sản phẩm
+              </h4>
               <ul className="space-y-2">
                 {categories.map((category) => (
                   <li key={category.href}>
-                    <Link 
-                      href={category.href} 
+                    <Link
+                      href={category.href}
                       className="text-gray-400 hover:text-primary-400 transition-colors text-sm flex items-center space-x-2 group"
                     >
                       <span className="w-2 h-2 bg-primary-400 rounded-full opacity-60 group-hover:opacity-100"></span>
@@ -146,8 +157,8 @@ export default function Footer() {
               <ul className="space-y-3">
                 {policies.map((policy) => (
                   <li key={policy.href}>
-                    <Link 
-                      href={policy.href} 
+                    <Link
+                      href={policy.href}
                       className="text-gray-300 hover:text-primary-400 transition-colors text-sm flex items-center space-x-2 group"
                     >
                       <ChevronRightIcon className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -160,12 +171,17 @@ export default function Footer() {
 
             {/* Services & Social */}
             <div>
-              <h3 className="text-lg font-bold mb-6 text-white">Cam kết dịch vụ</h3>
+              <h3 className="text-lg font-bold mb-6 text-white">
+                Cam kết dịch vụ
+              </h3>
               <div className="space-y-4 mb-8">
                 {services.map((service, index) => {
                   const IconComponent = service.icon;
                   return (
-                    <div key={index} className="flex items-center space-x-3 group">
+                    <div
+                      key={index}
+                      className="flex items-center space-x-3 group"
+                    >
                       <div className="w-8 h-8 bg-primary-400/20 rounded-lg flex items-center justify-center group-hover:bg-primary-400/30 transition-colors">
                         <IconComponent className="w-4 h-4 text-primary-400" />
                       </div>
@@ -178,40 +194,42 @@ export default function Footer() {
               </div>
 
               {/* Social Links */}
-              <h4 className="text-md font-semibold mb-4 text-white">Kết nối với chúng tôi</h4>
+              <h4 className="text-md font-semibold mb-4 text-white">
+                Kết nối với chúng tôi
+              </h4>
               <div className="grid grid-cols-2 gap-3">
-                <a 
-                  href="https://facebook.com/mevabe" 
-                  target="_blank" 
+                <a
+                  href="https://facebook.com/mevabe"
+                  target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center space-x-2 bg-blue-600 hover:bg-blue-700 text-white px-3 py-2 rounded-lg text-sm transition-colors"
+                  className="btn-social btn-facebook"
                 >
                   <span>📘</span>
                   <span>Facebook</span>
                 </a>
-                <a 
-                  href="https://zalo.me/mevabe" 
-                  target="_blank" 
+                <a
+                  href="https://zalo.me/mevabe"
+                  target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center space-x-2 bg-blue-500 hover:bg-blue-600 text-white px-3 py-2 rounded-lg text-sm transition-colors"
+                  className="btn-social btn-zalo"
                 >
                   <span>💬</span>
                   <span>Zalo OA</span>
                 </a>
-                <a 
-                  href="https://instagram.com/mevabe" 
-                  target="_blank" 
+                <a
+                  href="https://instagram.com/mevabe"
+                  target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center space-x-2 bg-pink-600 hover:bg-pink-700 text-white px-3 py-2 rounded-lg text-sm transition-colors"
+                  className="btn-social btn-instagram"
                 >
                   <span>📷</span>
                   <span>Instagram</span>
                 </a>
-                <a 
-                  href="https://youtube.com/mevabe" 
-                  target="_blank" 
+                <a
+                  href="https://youtube.com/mevabe"
+                  target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center space-x-2 bg-red-600 hover:bg-red-700 text-white px-3 py-2 rounded-lg text-sm transition-colors"
+                  className="btn-social btn-youtube"
                 >
                   <span>📹</span>
                   <span>YouTube</span>
@@ -220,11 +238,11 @@ export default function Footer() {
 
               {/* Map Link */}
               <div className="mt-6">
-                <a 
-                  href="https://maps.google.com/?q=123+Nguyễn+Văn+Cừ+Quận+1+TP.HCM" 
-                  target="_blank" 
+                <a
+                  href="https://maps.google.com/?q=123+Nguyễn+Văn+Cừ+Quận+1+TP.HCM"
+                  target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center space-x-2 bg-gradient-primary text-white px-4 py-2 rounded-lg text-sm hover:shadow-primary-lg transition-all"
+                  className="btn-primary-sm"
                 >
                   <MapPinIcon className="w-4 h-4" />
                   <span>Xem bản đồ</span>
@@ -246,14 +264,12 @@ export default function Footer() {
           </div>
           <div className="max-w-md mx-auto">
             <div className="flex">
-              <input 
-                type="email" 
+              <input
+                type="email"
                 placeholder="Nhập email của bạn..."
                 className="flex-1 px-4 py-3 bg-gray-800 border border-gray-600 rounded-l-lg text-white placeholder-gray-400 focus:outline-none focus:border-primary-400"
               />
-              <button className="bg-gradient-primary text-white px-6 py-3 rounded-r-lg hover:shadow-primary-lg transition-all">
-                Đăng ký
-              </button>
+              <button className="btn-primary rounded-l-none">Đăng ký</button>
             </div>
           </div>
         </div>
@@ -264,10 +280,11 @@ export default function Footer() {
             <div className="text-gray-400 text-sm text-center md:text-left">
               <p>© {currentYear} Shop Mẹ & Bé. Tất cả quyền được bảo lưu.</p>
               <p className="mt-1">
-                Thiết kế bởi <span className="text-primary-400">MeVaBe Team</span> ❤️
+                Thiết kế bởi{" "}
+                <span className="text-primary-400">MeVaBe Team</span> ❤️
               </p>
             </div>
-            
+
             {/* Payment Methods */}
             <div className="flex items-center space-x-4">
               <span className="text-gray-400 text-sm">Thanh toán:</span>

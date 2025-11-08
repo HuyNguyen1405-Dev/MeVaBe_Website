@@ -24,6 +24,114 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Page Transition Animations */
+.page-transition-enter {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.page-transition-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.4s ease-out, transform 0.4s ease-out;
+}
+
+.page-transition-exit {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.page-transition-exit-active {
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: opacity 0.3s ease-in, transform 0.3s ease-in;
+}
+
+/* Smooth Page Loading */
+.page-loading {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, #0ba6df, #38bdf8);
+  z-index: 9999;
+  transform-origin: left;
+  animation: pageLoadProgress 0.8s ease-out;
+}
+
+@keyframes pageLoadProgress {
+  0% {
+    transform: scaleX(0);
+  }
+  50% {
+    transform: scaleX(0.7);
+  }
+  100% {
+    transform: scaleX(1);
+    opacity: 0;
+  }
+}
+
+/* Layout Transition Improvements */
+.main-content {
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform, opacity;
+}
+
+/* Route Change Animations */
+@keyframes routeEnter {
+  from {
+    opacity: 0;
+    transform: translateY(30px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes routeExit {
+  from {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-30px) scale(0.98);
+  }
+}
+
+.route-enter {
+  animation: routeEnter 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.route-exit {
+  animation: routeExit 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+/* Staggered Animation for Elements */
+@keyframes staggerFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.stagger-animation {
+  animation: staggerFadeIn 0.6s ease-out both;
+}
+
+.stagger-delay-1 { animation-delay: 0.1s; }
+.stagger-delay-2 { animation-delay: 0.2s; }
+.stagger-delay-3 { animation-delay: 0.3s; }
+.stagger-delay-4 { animation-delay: 0.4s; }
+.stagger-delay-5 { animation-delay: 0.5s; }
+
 /* Custom scrollbar for webkit browsers */
 ::-webkit-scrollbar {
   width: 6px;
@@ -45,6 +153,42 @@ html {
 /* Focus styles for accessibility */
 .focus\:ring-primary-200:focus {
   --tw-ring-color: rgb(125 211 252 / var(--tw-ring-opacity));
+}
+
+/* Remove default link underlines globally for navigation */
+nav a,
+nav button,
+.nav-link-smooth,
+.category-link,
+header a,
+header button {
+  text-decoration: none !important;
+  border: none !important;
+  box-shadow: none;
+}
+
+nav a:hover,
+nav button:hover,
+.nav-link-smooth:hover,
+.category-link:hover,
+header a:hover,
+header button:hover,
+nav a:focus,
+nav button:focus,
+.nav-link-smooth:focus,
+.category-link:focus,
+header a:focus,
+header button:focus {
+  text-decoration: none !important;
+  border: none !important;
+}
+
+/* Ensure no browser default styles interfere */
+header button:focus-visible,
+nav button:focus-visible {
+  outline: 2px solid rgba(11, 166, 223, 0.5);
+  outline-offset: 2px;
+  border-radius: 4px;
 }
 
 /* Custom animations */
@@ -79,6 +223,122 @@ html {
   opacity: 0;
 }
 
+/* Category Menu Animations */
+@keyframes slideInCategory {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes glow {
+  0% {
+    box-shadow: 0 0 5px rgba(11, 166, 223, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(11, 166, 223, 0.4);
+  }
+  100% {
+    box-shadow: 0 0 5px rgba(11, 166, 223, 0.2);
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  33% {
+    transform: translateY(-5px) rotate(1deg);
+  }
+  66% {
+    transform: translateY(2px) rotate(-1deg);
+  }
+}
+
+.category-item {
+  animation: slideInCategory 0.6s ease-out;
+}
+
+.category-glow:hover {
+  animation: glow 2s infinite;
+}
+
+.promotion-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Scrollbar hide for mobile category menu */
+.scrollbar-hide {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none; /* Chrome, Safari and Opera */
+}
+
+/* Gradient text effect */
+.gradient-text {
+  background: linear-gradient(135deg, #0ba6df, #06b6d4);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Category card hover effects */
+.category-card {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform, box-shadow;
+}
+
+.category-card:hover {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 10px 25px rgba(11, 166, 223, 0.15);
+}
+
+/* Icon bounce animation */
+@keyframes iconBounce {
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
+    transform: translateY(0) scale(1);
+  }
+  40% {
+    transform: translateY(-3px) scale(1.05);
+  }
+  60% {
+    transform: translateY(-1px) scale(1.02);
+  }
+}
+
+.icon-bounce:hover {
+  animation: iconBounce 0.6s ease;
+}
+
+/* Promotion pulse effect */
+.promotion-pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.02);
+  }
+}
+
 .mobile-menu-enter-active {
   transform: translateY(0);
   opacity: 1;
@@ -90,10 +350,18 @@ html {
   box-shadow: 0 0 0 3px rgba(11, 166, 223, 0.1);
 }
 
-/* Category menu hover effect */
+/* Category menu hover effect - Updated to prevent conflicts */
 .category-link {
   position: relative;
   overflow: hidden;
+  text-decoration: none !important;
+}
+
+.category-link:link,
+.category-link:visited,
+.category-link:hover,
+.category-link:active {
+  text-decoration: none !important;
 }
 
 .category-link::before {
@@ -427,7 +695,8 @@ html {
 
 /* Additional Banner Animations */
 @keyframes bounceGentle {
-  0%, 100% {
+  0%,
+  100% {
     transform: translateY(0);
   }
   50% {
@@ -488,6 +757,749 @@ html {
   image-rendering: crisp-edges;
 }
 
+/* Enhanced Header Styles - 2025 Modern Design */
+.header-backdrop-blur {
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+.header-glass-effect {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+/* Logo Hover Effects */
+.logo-hover-3d:hover {
+  transform: perspective(1000px) rotateX(10deg) rotateY(-10deg) scale(1.05);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Navigation Link Hover Animation */
+.nav-link-hover {
+  position: relative;
+  overflow: hidden;
+}
+
+.nav-link-hover::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(11, 166, 223, 0.1),
+    transparent
+  );
+  transition: left 0.5s;
+}
+
+.nav-link-hover:hover::before {
+  left: 100%;
+}
+
+/* Search Bar Glow Effect */
+.search-glow:focus-within {
+  box-shadow: 0 0 0 1px #0ba6df, 0 0 0 4px rgba(11, 166, 223, 0.1),
+    0 8px 25px rgba(11, 166, 223, 0.15);
+}
+
+/* Button Micro-interactions */
+.button-micro-bounce:active {
+  transform: scale(0.98);
+  transition: transform 0.1s ease;
+}
+
+.button-ripple {
+  position: relative;
+  overflow: hidden;
+}
+
+.button-ripple::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+.button-ripple:active::after {
+  width: 300px;
+  height: 300px;
+}
+
+/* Mobile Menu Animations */
+@keyframes slideInFromTop {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.mobile-menu-slide-in {
+  animation: slideInFromTop 0.3s ease-out;
+}
+
+/* Hamburger Menu Animation */
+.hamburger-line {
+  transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+/* Cart Badge Pulse Animation */
+@keyframes badgePulse {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 0.8;
+  }
+}
+
+.badge-pulse {
+  animation: badgePulse 2s infinite;
+}
+
+/* Top Bar Hover Effects */
+.top-bar-item:hover {
+  transform: translateY(-1px);
+  transition: transform 0.2s ease;
+}
+
+/* Gradient Text Animation */
+@keyframes gradientText {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.gradient-text-animated {
+  background: linear-gradient(45deg, #0ba6df, #0891b2, #38bdf8, #0ba6df);
+  background-size: 300% 300%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradientText 3s ease infinite;
+}
+
+/* Enhanced Focus States for Accessibility */
+.focus-ring-primary:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px #0ba6df,
+    0 0 0 6px rgba(11, 166, 223, 0.2);
+}
+
+/* Smooth Navigation Improvements */
+.transition-container {
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+}
+
+/* Enhanced Link Hover Effects - Premium Version */
+.nav-link-smooth {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  text-decoration: none !important;
+  outline: none;
+  overflow: hidden;
+  border-radius: 8px;
+  padding: 8px 16px;
+  margin: -8px -16px;
+}
+
+/* Remove any default link underlines */
+.nav-link-smooth:link,
+.nav-link-smooth:visited,
+.nav-link-smooth:hover,
+.nav-link-smooth:active,
+.nav-link-smooth:focus {
+  text-decoration: none !important;
+  outline: none !important;
+}
+
+/* Animated gradient background on hover */
+.nav-link-smooth::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg, 
+    transparent, 
+    rgba(11, 166, 223, 0.1), 
+    transparent
+  );
+  transition: left 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: -2;
+}
+
+.nav-link-smooth:hover::before {
+  left: 100%;
+}
+
+/* Modern underline effect */
+.nav-link-smooth::after {
+  content: '';
+  position: absolute;
+  bottom: 4px;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #0ba6df, #38bdf8, #06b6d4);
+  border-radius: 2px;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translateX(-50%);
+  box-shadow: 0 2px 8px rgba(11, 166, 223, 0.3);
+}
+
+.nav-link-smooth:hover::after {
+  width: calc(100% - 32px);
+  box-shadow: 0 4px 16px rgba(11, 166, 223, 0.5);
+}
+
+/* Subtle glow effect on hover */
+.nav-link-smooth:hover {
+  background: linear-gradient(135deg, 
+    rgba(11, 166, 223, 0.05), 
+    rgba(56, 189, 248, 0.03),
+    rgba(6, 182, 212, 0.05)
+  );
+  box-shadow: 0 4px 20px rgba(11, 166, 223, 0.1);
+  transform: translateY(-1px);
+}
+
+/* Text glow effect */
+.nav-link-smooth:hover span {
+  text-shadow: 0 0 8px rgba(11, 166, 223, 0.3);
+}
+
+/* Loading Spinner for Navigation */
+.nav-loading {
+  position: relative;
+}
+
+.nav-loading::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 16px;
+  height: 16px;
+  margin: -8px 0 0 -8px;
+  border: 2px solid transparent;
+  border-top: 2px solid #0ba6df;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Smooth Image Loading */
+.img-smooth-load {
+  transition: opacity 0.3s ease;
+  opacity: 0;
+}
+
+.img-smooth-load.loaded {
+  opacity: 1;
+}
+
+/* Content Fade In Animation */
+.content-fade-in {
+  animation: contentFadeIn 0.6s ease-out forwards;
+}
+
+@keyframes contentFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ==========================================
+   UNIFIED BUTTON STYLES - MEVABE THEME
+   Based on Banner CTA Button (#0ba6df)
+   ========================================== */
+
+/* Primary Button - Main CTA Style */
+.btn-primary {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  background: #0ba6df;
+  color: white;
+  padding: 16px 32px;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 16px;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 8px 24px rgba(11, 166, 223, 0.25);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+}
+
+.btn-primary:hover {
+  background: #0891b2;
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 12px 32px rgba(11, 166, 223, 0.35);
+  text-decoration: none;
+  color: white;
+}
+
+.btn-primary:active {
+  transform: translateY(-1px) scale(1.01);
+}
+
+.btn-primary:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px #0ba6df;
+}
+
+/* Primary Button Small */
+.btn-primary-sm {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #0ba6df;
+  color: white;
+  padding: 12px 24px;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 14px;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 6px 18px rgba(11, 166, 223, 0.2);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+}
+
+.btn-primary-sm:hover {
+  background: #0891b2;
+  transform: translateY(-1px) scale(1.02);
+  box-shadow: 0 8px 24px rgba(11, 166, 223, 0.3);
+  text-decoration: none;
+  color: white;
+}
+
+/* Primary Button Large */
+.btn-primary-lg {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
+  background: #0ba6df;
+  color: white;
+  padding: 20px 40px;
+  border-radius: 16px;
+  font-weight: 700;
+  font-size: 18px;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 10px 30px rgba(11, 166, 223, 0.3);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+}
+
+.btn-primary-lg:hover {
+  background: #0891b2;
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 15px 40px rgba(11, 166, 223, 0.4);
+  text-decoration: none;
+  color: white;
+}
+
+/* Secondary Button - Outline Style with Primary Color */
+.btn-secondary {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: transparent;
+  color: #0ba6df;
+  padding: 14px 28px;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 16px;
+  text-decoration: none;
+  border: 2px solid #0ba6df;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+}
+
+.btn-secondary:hover {
+  background: #0ba6df;
+  color: white;
+  transform: translateY(-1px) scale(1.02);
+  box-shadow: 0 8px 24px rgba(11, 166, 223, 0.25);
+  text-decoration: none;
+}
+
+/* Tertiary Button - Ghost Style with Primary Color */
+.btn-tertiary {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(11, 166, 223, 0.1);
+  color: #0ba6df;
+  padding: 12px 24px;
+  border-radius: 10px;
+  font-weight: 500;
+  font-size: 14px;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+}
+
+.btn-tertiary:hover {
+  background: rgba(11, 166, 223, 0.15);
+  color: #0891b2;
+  transform: translateY(-1px);
+  text-decoration: none;
+}
+
+/* Icon Button - Primary Color Theme */
+.btn-icon {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  background: rgba(11, 166, 223, 0.1);
+  color: #0ba6df;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  text-decoration: none;
+}
+
+.btn-icon:hover {
+  background: #0ba6df;
+  color: white;
+  transform: scale(1.1);
+  box-shadow: 0 4px 16px rgba(11, 166, 223, 0.2);
+  text-decoration: none;
+}
+
+.btn-icon-sm {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+}
+
+.btn-icon-lg {
+  width: 56px;
+  height: 56px;
+  border-radius: 16px;
+}
+
+/* Social Button Variants - Using Primary Color Base */
+.btn-social {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 20px;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 14px;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+}
+
+/* Facebook với base color từ primary */
+.btn-facebook {
+  background: linear-gradient(135deg, #0ba6df 0%, #1877f2 100%);
+  color: white;
+}
+
+.btn-facebook:hover {
+  background: linear-gradient(135deg, #0891b2 0%, #166fe5 100%);
+  transform: translateY(-1px) scale(1.02);
+  box-shadow: 0 8px 24px rgba(24, 119, 242, 0.3);
+  text-decoration: none;
+  color: white;
+}
+
+/* Zalo với base color từ primary */
+.btn-zalo {
+  background: linear-gradient(135deg, #0ba6df 0%, #0068ff 100%);
+  color: white;
+}
+
+.btn-zalo:hover {
+  background: linear-gradient(135deg, #0891b2 0%, #0056e6 100%);
+  transform: translateY(-1px) scale(1.02);
+  box-shadow: 0 8px 24px rgba(0, 104, 255, 0.3);
+  text-decoration: none;
+  color: white;
+}
+
+/* Instagram với base color từ primary */
+.btn-instagram {
+  background: linear-gradient(135deg, #0ba6df 0%, #e4405f 100%);
+  color: white;
+}
+
+.btn-instagram:hover {
+  background: linear-gradient(135deg, #0891b2 0%, #d6336c 100%);
+  transform: translateY(-1px) scale(1.02);
+  box-shadow: 0 8px 24px rgba(228, 64, 95, 0.3);
+  text-decoration: none;
+  color: white;
+}
+
+/* YouTube với base color từ primary */
+.btn-youtube {
+  background: linear-gradient(135deg, #0ba6df 0%, #ff0000 100%);
+  color: white;
+}
+
+.btn-youtube:hover {
+  background: linear-gradient(135deg, #0891b2 0%, #e60000 100%);
+  transform: translateY(-1px) scale(1.02);
+  box-shadow: 0 8px 24px rgba(255, 0, 0, 0.3);
+  text-decoration: none;
+  color: white;
+}
+
+/* Button with underline effect - Like Banner CTA */
+.btn-underline {
+  position: relative;
+}
+
+.btn-underline::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.6);
+  transition: width 0.5s ease;
+}
+
+.btn-underline:hover::after {
+  width: 75%;
+}
+
+/* Button icon animations */
+.btn-icon-animate:hover .btn-icon-el {
+  transform: scale(1.1);
+}
+
+.btn-icon-el {
+  transition: transform 0.2s ease;
+}
+
+/* Button loading state */
+.btn-loading {
+  position: relative;
+  pointer-events: none;
+  opacity: 0.7;
+}
+
+.btn-loading::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 16px;
+  height: 16px;
+  margin: -8px 0 0 -8px;
+  border: 2px solid transparent;
+  border-top: 2px solid rgba(255, 255, 255, 0.8);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+/* Button disabled state */
+.btn-disabled {
+  opacity: 0.5;
+  pointer-events: none;
+  cursor: not-allowed;
+}
+
+/* Button group spacing */
+.btn-group {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.btn-group .btn-primary,
+.btn-group .btn-secondary,
+.btn-group .btn-tertiary {
+  margin: 0;
+}
+
+/* Hardware Acceleration for Smooth Animations */
+.hardware-accelerated {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000;
+  will-change: transform, opacity;
+}
+
+/* Optimizations for 60fps animations */
+.smooth-60fps {
+  transform: translateZ(0);
+  will-change: transform;
+  backface-visibility: hidden;
+}
+
+/* GPU-accelerated transitions */
+.gpu-accelerated {
+  transform: translate3d(0, 0, 0);
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+}
+
+/* Prevent layout shifts during animations */
+.no-layout-shift {
+  contain: layout style paint;
+}
+
+/* Smooth scrolling improvements */
+.smooth-scroll {
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Reduce motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .page-transition-enter,
+  .page-transition-enter-active,
+  .page-transition-exit,
+  .page-transition-exit-active,
+  .route-enter,
+  .route-exit {
+    animation: none !important;
+    transition: none !important;
+  }
+  
+  .hardware-accelerated,
+  .smooth-60fps,
+  .gpu-accelerated {
+    will-change: auto !important;
+  }
+}
+
+/* Enhanced loading states */
+.loading-shimmer {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite;
+}
+
+.loading-skeleton {
+  background: linear-gradient(90deg, 
+    rgba(240, 249, 255, 0.4) 25%, 
+    rgba(11, 166, 223, 0.1) 50%, 
+    rgba(240, 249, 255, 0.4) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s ease infinite;
+}
+
+/* Page enter/exit optimizations */
+.page-enter {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1), 
+              transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.page-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.page-exit {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1), 
+              transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.page-exit-active {
+  opacity: 0;
+  transform: translateY(-20px);
+}
+
+/* Optimized hover effects */
+.hover-optimized {
+  transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform;
+}
+
+.hover-optimized:hover {
+  transform: translateY(-2px);
+}
+
+/* Smooth Scroll Behavior */
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
 /* Mobile crop protection */
 @media (max-width: 768px) {
   .mobile-crop-safe {
@@ -497,7 +1509,12 @@ html {
 
 /* Luxury Banner Specific Styles */
 .banner-gradient {
-  background: linear-gradient(135deg, #0ba6df 0%, rgba(255, 255, 255, 0.95) 40%, #ffffff 100%);
+  background: linear-gradient(
+    135deg,
+    #0ba6df 0%,
+    rgba(255, 255, 255, 0.95) 40%,
+    #ffffff 100%
+  );
 }
 
 .banner-text-shadow {
@@ -515,24 +1532,24 @@ html {
 }
 
 /* Inter Font Import for Better Typography */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap");
 
 /* Be Vietnam Pro Font for Vietnamese Content */
-@import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800;900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800;900&display=swap");
 
 /* Font Classes */
 .font-inter-extrabold {
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
   font-weight: 900;
 }
 
 .font-be-vietnam-bold {
-  font-family: 'Be Vietnam Pro', sans-serif;
+  font-family: "Be Vietnam Pro", sans-serif;
   font-weight: 700;
 }
 
 .font-inter-medium {
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
   font-weight: 500;
 }
 
